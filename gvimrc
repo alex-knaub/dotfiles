@@ -1,4 +1,3 @@
-"colorscheme github
 "colorscheme moria
 "colorscheme vividchalk
 "colorscheme bclear
@@ -12,7 +11,7 @@
 "colorscheme mynuvola
 "colorscheme topfunky-light
 "colorscheme jellybeans
-colorscheme summerfruit256
+colorscheme summerfruit
 
 "let g:mayansmoke_special_key_visibility = 1
 "let g:mayansmoke_cursor_line_visibility = 2
@@ -29,6 +28,8 @@ let g:halfsize = 86
 let g:fullsize = 171
 set lines=50
 let &columns = g:halfsize
+set macmeta
+
 
 " Font
 "set guifont=Monaco:h11.00
@@ -50,8 +51,6 @@ set guioptions+=c
 
 "highlight NonText guibg=#060606
 "highlight Folded  guibg=#0A0A0A guifg=#9090D0
-
-"set nomacatsui
 
 
 if has("gui_macvim")

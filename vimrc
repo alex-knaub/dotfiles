@@ -7,7 +7,6 @@ set showcmd
 set showmatch
 set ff=unix
 set ffs=unix
-set macmeta
 
 let mapleader=","
 "os x clipboard nutzen
@@ -117,6 +116,9 @@ set viminfo='500,<50,s10,:20,h,!
 
 "------------ Tags --------------
 set tags=./tags;../../../../
+let g:gutentags_exclude = ['*.css', '*.html']
+let g:gutentags_cache_dir = '~/.vim/gutentags'
+map <silent><F4> :CtrlPTag<cr><c-\>w
 
 
 
@@ -235,9 +237,6 @@ vmap ß :call KuschelhackerCommentar()<CR>
 map <Leader>w <C-W>w
 
 "-------------- ABBreviaturen --------
-"iab (      ()<LEFT>
-"iab [      []<LEFT>
-"iab "      ""<LEFT>
 iab vv      var_dump();<LEFT><LEFT>
 iab drin    print "drin\n";
 iab LL //----------------------------------------------------------------------------
