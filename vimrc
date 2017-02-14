@@ -14,8 +14,8 @@ set clipboard+=unnamed
 
 "set background=dark
 set background=light
-"colorscheme jellybeans
 set t_Co=256
+colorscheme summerfruit256
 
 set grepprg=/opt/local/bin/ack
 set grepformat=%f:%l:%m
@@ -183,6 +183,9 @@ imap <F6> <Esc><C-T>
 vmap <Left> h
 nmap <S-Left> vh
 nmap <S-Right> vh
+
+map <Tab> >gv
+vmap <S-Tab> <gv
 
 "minibuferxpl
 map <D-M-right> <ESC>:MBEbn<RETURN>

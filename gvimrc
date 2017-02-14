@@ -11,7 +11,7 @@
 "colorscheme mynuvola
 "colorscheme topfunky-light
 "colorscheme jellybeans
-colorscheme summerfruit
+colorscheme summerfruit256
 
 "let g:mayansmoke_special_key_visibility = 1
 "let g:mayansmoke_cursor_line_visibility = 2
