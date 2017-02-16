@@ -78,7 +78,7 @@ autocmd BufRead,BufNewFile *.txt setfiletype text
 autocmd FileType make set  noexpandtab shiftwidth=8
 autocmd FileType html set  nowrap 
 autocmd FileType xml  set  tw=0 encoding=utf-8 fileencoding=utf-8
-autocmd FileType php  set  nowrap 
+autocmd FileType php  set  nowrap omnifunc=phpcomplete#CompletePHP
 autocmd FileType module  set  nowrap
 autocmd FileType py   set   expandtab tw=80 number 
 autocmd FileType python set expandtab tw=80 number 
@@ -115,9 +115,10 @@ set cursorline
 set viminfo='500,<50,s10,:20,h,!
 
 "------------ Tags --------------
-set tags=./tags;../../../../
-let g:gutentags_exclude = ['*.css', '*.html']
-let g:gutentags_cache_dir = '~/.vim/gutentags'
+"set tags=./tags;../../../../
+set tags=./tags;,tags;
+let g:gutentags_exclude = ['*.css', '*.html', '*.js', 'node_modules']
+"let g:gutentags_cache_dir = '~/.vim/gutentags'
 map <silent><F4> :CtrlPTag<cr><c-\>w
 
 

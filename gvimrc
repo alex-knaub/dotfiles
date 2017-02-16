@@ -4,6 +4,7 @@
 
 "colorscheme molokai
 "set background=dark
+set background=light
 "colorscheme herald
 "colorscheme mayansmoke
 "colorscheme ir_black
@@ -13,8 +14,6 @@
 "colorscheme jellybeans
 colorscheme summerfruit256
 
-"let g:mayansmoke_special_key_visibility = 1
-"let g:mayansmoke_cursor_line_visibility = 2
 
 imap <D-s> <ESC>:w <CR>
 map <D-s> <ESC>:w <CR>
@@ -28,7 +27,7 @@ let g:halfsize = 86
 let g:fullsize = 171
 set lines=50
 let &columns = g:halfsize
-set macmeta
+"set macmeta
 
 
 " Font
@@ -60,7 +59,3 @@ if has("gui_macvim")
   map <D-w> <ESC>:bd <CR>
 endif
 
-if has("gui_macvim")
-   macmenu &File.New\ Tab key=<nop>
-   map <D-t> <Plug>PeepOpen
-end
