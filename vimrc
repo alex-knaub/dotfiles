@@ -12,10 +12,11 @@ let mapleader=","
 "os x clipboard nutzen
 set clipboard+=unnamed
 
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 set t_Co=256
-colorscheme summerfruit256
+"colorscheme summerfruit256
+colorscheme molokai
 
 set ignorecase
 set infercase
@@ -32,6 +33,7 @@ set matchtime=2
 set ruler
 set hid             "Bufferwechsel ohne zu speichern
 set switchbuf=useopen   "geöffnete Buffer im enstsprechenden Window laden
+set hlsearch
 
 function! CurDir()
 	let curdir = substitute(getcwd(), '/Users/ak/', "~/", "g")
@@ -64,7 +66,7 @@ filetype plugin on
 "autocmd BufWinLeave * if expand("%") != "" | mkview | endif
 "autocmd BufWinEnter * if expand("%") != "" | loadview | endif
 
-set listchars=tab:»\ ,trail:-,eol:↲ 
+"set listchars=tab:»\ ,trail:-,eol:↲ 
 "set listchars=
 
 
@@ -112,7 +114,6 @@ set viminfo='500,<50,s10,:20,h,!
 
 "------------ Tags --------------
 "set tags=./tags;../../../../
-set tags=./tags;,tags;
 let g:gutentags_exclude = ['*.css', '*.html', '*.js', 'node_modules']
 let g:gutentags_cache_dir = '~/.vim/gutentags'
 map <silent><F4> :CtrlPTag<cr><c-\>w
@@ -149,7 +150,11 @@ map <Tab> ==
 
 imap <F2> <Esc> :NERDTreeToggle<CR>
 map <F2> :NERDTreeToggle<CR>
+map <Leader>r :NERDTreeFind<CR>
 let g:NERDTreeWinSize=30
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
 
 map <F3> :TagbarToggle<RETURN>
 imap <F3> <ESC>:TagbarToggle<RETURN>

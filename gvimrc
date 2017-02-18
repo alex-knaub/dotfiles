@@ -4,7 +4,7 @@
 
 "colorscheme molokai
 "set background=dark
-set background=light
+"set background=light
 "colorscheme herald
 "colorscheme mayansmoke
 "colorscheme ir_black
@@ -12,7 +12,7 @@ set background=light
 "colorscheme mynuvola
 "colorscheme topfunky-light
 "colorscheme jellybeans
-colorscheme summerfruit256
+"colorscheme summerfruit256
 
 
 imap <D-s> <ESC>:w <CR>
