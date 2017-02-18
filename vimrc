@@ -76,13 +76,13 @@ autocmd BufRead,BufNewFile *.txt setfiletype text
 autocmd FileType make set  noexpandtab shiftwidth=8
 autocmd FileType html set  nowrap 
 autocmd FileType xml  set  tw=0 encoding=utf-8 fileencoding=utf-8
-autocmd FileType php  set  nowrap omnifunc=phpcomplete#CompletePHP
+autocmd FileType php  set  nowrap number omnifunc=phpcomplete#CompletePHP
 autocmd FileType module  set  nowrap
 autocmd FileType py   set   expandtab tw=80 number 
 autocmd FileType python set expandtab tw=80 number 
 autocmd FileType text  set  tw=80 
 autocmd FileType javascript  set  tw=80 
-autocmd FileType ruby  set  tw=80 
+autocmd FileType ruby  set  tw=80 number
 "autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 "autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 "autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
@@ -151,10 +151,11 @@ map <Tab> ==
 imap <F2> <Esc> :NERDTreeToggle<CR>
 map <F2> :NERDTreeToggle<CR>
 map <Leader>r :NERDTreeFind<CR>
-let g:NERDTreeWinSize=30
+"let g:NERDTreeWinSize=30
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
+let NERDTreeHijackNetrw=1
 
 map <F3> :TagbarToggle<RETURN>
 imap <F3> <ESC>:TagbarToggle<RETURN>
@@ -233,6 +234,7 @@ map ä }
 "zur marke springen
 "ü . zur letzten änderung springen
 map ü `
+map ä ``
 
 map <D-f> /
 
@@ -323,6 +325,16 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
+
+
+"CTRLP
+map <Leader>b :CtrlPBuffer<CR>
+map <Leader>, :CtrlPMRU<CR>
+" only show most recently used files relative to current working directory
+let g:ctrlp_mruf_relative = 1
+
+
+
 
 
 set rtp+=/usr/local/opt/fzf

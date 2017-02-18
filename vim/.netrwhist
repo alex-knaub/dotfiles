@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/Users/ak/Sites/rails/runnerr/app'
-let g:netrw_dirhist_2='/Users/ak/Sites/www/weisser-ring'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/ak/Sites/www/merck-gb-2016/sites/all'
+let g:netrw_dirhist_2='/Users/ak/Sites/www/merck-gb-2016/sites'
+let g:netrw_dirhist_3='/Users/ak/Sites/www/merck-gb-2016/sites/all'
+let g:netrw_dirhist_4='/Users/ak/Sites/www/merck-gb-2016/sites/all/modules'
+let g:netrw_dirhist_5='/Users/ak/Sites/rails/hlxcalculator'
