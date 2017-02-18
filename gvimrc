@@ -28,7 +28,7 @@ let g:halfsize = 86
 let g:fullsize = 171
 set lines=50
 let &columns = g:halfsize
-set macmeta
+"set macmeta
 
 
 " Font

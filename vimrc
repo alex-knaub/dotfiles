@@ -149,6 +149,7 @@ map <Tab> ==
 imap <F2> <Esc> :NERDTreeToggle<CR>
 map <F2> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=30
+let NERDTreeHijackNetrw=1
 
 map <F3> :TagbarToggle<RETURN>
 imap <F3> <ESC>:TagbarToggle<RETURN>
@@ -317,6 +318,16 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
+
+
+"CTRLP
+map <Leader>b :CtrlPBuffer<CR>
+map <Leader>, :CtrlPMRU<CR>
+" only show most recently used files relative to current working directory
+let g:ctrlp_mruf_relative = 1
+
+
+
 
 
 set rtp+=/usr/local/opt/fzf
