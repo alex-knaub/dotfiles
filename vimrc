@@ -127,7 +127,7 @@ imap <UP> <C-O>gk
 imap <Down> <C-O>gj
 
 "Zeile ohne linebreak am Ende kopieren
-map Y y$        
+map Y vg_
 map j gj
 map k gk
 "map h gh

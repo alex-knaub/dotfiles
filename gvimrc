@@ -33,7 +33,7 @@ let &columns = g:halfsize
 " Font
 "set guifont=Monaco:h11.00
 "set guifont=Inconsolata:h14
-set guifont=Fira\ Code:h15
+set guifont=Fira\ Code:h14
 "set guifont=Consolas:h15
 "set guifont=Droid\ Sans\ Mono:h13
 "set guifont=AnonymousPro:h14
