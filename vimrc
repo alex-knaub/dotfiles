@@ -25,7 +25,8 @@ set noerrorbells
 set scrolloff=5
 set sidescrolloff=2
 set mouse=a
-set completeopt=menuone,longest,preview
+"set completeopt=menuone,longest,preview
+set completeopt-=preview
 syntax on
 set joinspaces
 set nostartofline   "kursor in einer spalte        
@@ -114,7 +115,13 @@ set viminfo='500,<50,s10,:20,h,!
 
 "------------ Tags --------------
 "set tags=./tags;../../../../
-let g:gutentags_exclude = ['*.css', '*.html', '*.js', 'node_modules']
+let g:gutentags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
+                            \ '*.phar', '*.ini', '*.rst', '*.md','*node_modules/*',
+                            \ '*vendor/*/test*', '*vendor/*/Test*',
+                            \ '*vendor/*',
+                            \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
+                            \ '*var/cache*', '*var/log*']
+
 let g:gutentags_cache_dir = '~/.vim/gutentags'
 map <silent><F4> :CtrlPTag<cr><c-\>w
 
@@ -140,7 +147,6 @@ noremap <S-space> <C-u>
 noremap % v%
 
 
-noremap Y y$
 noremap ^[[D <ESC>
 cab W w
 
