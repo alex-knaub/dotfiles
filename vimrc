@@ -1,4 +1,22 @@
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+  Plug 'vim-airline/vim-airline'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-surround'
+  Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/vim-slash'
+call plug#end()
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tabs = 0
+let g:airline#extensions#tabline#show_buffers = 1
+autocmd VimEnter * AirlineToggleWhitespace
+
+set background=dark
+colorscheme default
+set termguicolors
+
 
 set nocompatible
 set noswapfile
@@ -9,19 +27,13 @@ set ff=unix
 set ffs=unix
 
 let mapleader=","
-"os x clipboard nutzen
 set clipboard+=unnamed
 
-set background=dark
-"set background=light
-set t_Co=256
-"colorscheme summerfruit256
-colorscheme molokai
-
+set lazyredraw
 set ignorecase
 set infercase
 set showfulltag
-set noerrorbells 
+set noerrorbells
 set scrolloff=5
 set sidescrolloff=2
 set mouse=a
@@ -29,12 +41,13 @@ set mouse=a
 set completeopt-=preview
 syntax on
 set joinspaces
-set nostartofline   "kursor in einer spalte        
+set nostartofline   "kursor in einer spalte
 set matchtime=2
 set ruler
 set hid             "Bufferwechsel ohne zu speichern
 set switchbuf=useopen   "geöffnete Buffer im enstsprechenden Window laden
 set hlsearch
+set shortmess=aoOtIWcFs
 
 function! CurDir()
 	let curdir = substitute(getcwd(), '/Users/ak/', "~/", "g")
@@ -54,7 +67,7 @@ set statusline+=%= 								"right align
 set statusline+=0x%-8B\ 					 	"current char
 set statusline+=%-14.(%l,%c%V%)\ %<%P 			"offset
 
-set autowrite         
+set autowrite
 set autoindent
 set tabstop=2
 set shiftwidth=2
@@ -64,13 +77,8 @@ filetype on
 filetype indent on
 filetype plugin on
 
-"autocmd BufWinLeave * if expand("%") != "" | mkview | endif
-"autocmd BufWinEnter * if expand("%") != "" | loadview | endif
-
-"set listchars=tab:»\ ,trail:-,eol:↲ 
-"set listchars=
-
-
+set lcs=tab:▸\ ,trail:·,nbsp:_
+set list
 
 autocmd BufRead,BufNewFile *.txt setfiletype text
 
@@ -84,16 +92,7 @@ autocmd FileType python set expandtab tw=80 number
 autocmd FileType text  set  tw=80 
 autocmd FileType javascript  set  tw=80 
 autocmd FileType ruby  set  tw=80 number
-"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-"autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-"autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-"let b:closetag_html_style=1
-"au Filetype html,xml,php source ~/.vim/scripts/closetag.vim
-
-"let xml_use_xhtml = 1
-let xml_jump_string = "`"
 
 if has("autocmd")
   augroup module
@@ -105,6 +104,7 @@ if has("autocmd")
 endif
 
 set wildmode=list:longest,list:full
+set wildchar=<Tab> wildmenu wildmode=full
 
 
 set nostartofline   "kursor auf einer linie nach unten skrollen
@@ -113,19 +113,7 @@ set cursorline
 
 set viminfo='500,<50,s10,:20,h,!
 
-"------------ Tags --------------
-"set tags=./tags;../../../../
-let g:gutentags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
-                            \ '*.phar', '*.ini', '*.rst', '*.md','*node_modules/*',
-                            \ '*vendor/*/test*', '*vendor/*/Test*',
-                            \ '*vendor/*',
-                            \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
-                            \ '*var/cache*', '*var/log*']
-
-let g:gutentags_cache_dir = '~/.vim/gutentags'
 map <silent><F4> :CtrlPTag<cr><c-\>w
-
-
 
 map <BS> bdw
 map <UP> gk
@@ -134,7 +122,7 @@ imap <UP> <C-O>gk
 imap <Down> <C-O>gj
 
 "Zeile ohne linebreak am Ende kopieren
-map Y vg_
+map Y y$
 map j gj
 map k gk
 "map h gh
@@ -147,7 +135,6 @@ noremap <S-space> <C-u>
 noremap % v%
 
 
-noremap ^[[D <ESC>
 cab W w
 
 nmap <C-j> gqap 
@@ -163,20 +150,6 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 let NERDTreeHijackNetrw=1
 
-map <F3> :TagbarToggle<RETURN>
-imap <F3> <ESC>:TagbarToggle<RETURN>
-
-
-"map <S-F5> v_ip
-map <S-F5> v_ap
-" (de)indenting the current paragraph:
-"map  <F5> <ip
-"vmap <F5> <
-"map  <F6> >ip
-"vmap <F6> >
-"vnoremap <F5> <lt>
-"vnoremap <F6> >
-"imap <F6> <C-p>
 
 map <F5> <C-W>w
 "map <F5> :sp<CR><C-]>
@@ -185,101 +158,26 @@ imap <F5> <Esc><C-]>
 map <F6> <C-T>
 imap <F6> <Esc><C-T>
 
-"map <F13> bdelete <CR>
-"imap <F13> <Esc> bdelete <CR> 
-
-"Mit Shift markieren
-vmap <Left> h
-nmap <S-Left> vh
-nmap <S-Right> vh
-
 map <Tab> >gv
 vmap <S-Tab> <gv
 
-"minibuferxpl
-map <D-M-right> <ESC>:MBEbn<RETURN>
-map <D-M-left> <ESC>:MBEbp<RETURN>
-map <D-w> <ESC>:bd<CR>
+
+map ,n :bn<CR>
+map ,m :bp<CR>
+nnoremap <leader>b :ls<CR>:b<Space>
 
 
-
-map <S-D-right> <ESC>:tabnext<RETURN>
-map <S-D-left> <ESC>:tabprev<RETURN>
-"map <D-w> <ESC>:tabclose<CR>
-"map <D-t> <ESC>:tabnew<CR>
-map tn :tabnext<CR>
-map tp :tabprev<CR>
-map to :tabnew<CR>
-map tc :tabclose<CR>
-map te :tabedit<CR>
-"cab e tabe
-map ,bn :bn<CR>
-map ,bp :bp<CR>
-
-map <D-right> <END>
-map <D-left> <HOME>
-imap <D-right> <END>
-imap <D-left> <HOME>
-
-
-map  <D-d> <C-d>
-map  <D-u> <C-u>
-imap <D-up><ESC> gg
-map <D-up> gg
-imap <D-down><ESC> G
-map <D-down> G
-map <M-right> w
-map <M-left> b
-map <M-up> {
-map <M-down> }
-map ^[[A {
-map ^[[B }
-map ö {
-map ä }
 
 "zur marke springen
 "ü . zur letzten änderung springen
 map ü `
 map ä ``
 
-map <D-f> /
-
-map ß :call KuschelhackerCommentar()<CR>
-vmap ß :call KuschelhackerCommentar()<CR>
 
 map <Leader>w <C-W>w
 
 "-------------- ABBreviaturen --------
-iab vv      var_dump();<LEFT><LEFT>
-iab drin    print "drin\n";
-iab LL //----------------------------------------------------------------------------
 iab lorem   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-iab defi def initialize <CR>end<C-O>O
-iab def def<CR>end<ESC>kA
-
-if has("menu")
-  amenu Knaub.vimrc :e ~/.vimrc<CR>
-  amenu Knaub.gvimrc :e ~/.gvimrc<CR>
-  amenu Knaub.zshrc :e ~/.zshrc<CR>
-  amenu Knaub.www :e ~/Sites/www/<CR>
-  amenu Knaub.todo :e ~/Documents/todo.txt<CR>
-endif
-
-imap <D-s> <ESC>:w <CR>
-map <D-s> <ESC>:w <CR>
-
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
 
 
 map <c-l> <c-w>l
@@ -291,51 +189,17 @@ imap <c-k> <esc><c-w>ki
 imap <c-j> <esc><c-w>ji
 imap <c-h> <esc><c-w>hi
 
-imap <F3> <C-X>/
-
-
-"nnoremap d "_d
-"vnoremap d "_d
-"nnoremap D "_D
-"vnoremap D "_D
-"nnoremap c "_c
-"vnoremap c "_c
-"nnoremap C "_C
-"vnoremap C "_C
-
-
-"let g:loaded_matchparen=1
-
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-
-let g:ragtag_global_maps = 1
 
 
 
-let g:tagbar_type_php =  {
-  \'kinds' : [
-      \ 'c:classes',
-      \ 'd:constant definitions',
-      \ 'f:functions',
-      \ ]
-      \}
+let g:fzf_height = '40%'
+let g:fzf_commits_log_options = '--color --graph --pretty=format:"%C(yellow)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%cr) %Cred<%an>%Creset" --abbrev-commit'
 
-" GO
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
+nnoremap <c-p> :FZF<cr>
+nnoremap <c-i> :Buffers<cr>
+nnoremap <c-t> :Lines<cr>
+nnoremap <c-g> :Rg!<cr>
+nnoremap <silent> <BS> :History:<cr>
 
-
-"CTRLP
-map <Leader>b :CtrlPBuffer<CR>
-map <Leader>, :CtrlPMRU<CR>
-" only show most recently used files relative to current working directory
-let g:ctrlp_mruf_relative = 1
-
+command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --pretty --no-heading '.shellescape(<q-args>), 1, <bang>0)
 
