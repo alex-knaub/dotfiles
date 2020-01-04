@@ -7,6 +7,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/vim-slash'
   Plug 'plasticboy/vim-markdown'
   Plug 'stanangeloff/php.vim'
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'tpope/vim-rails'
+  Plug 'klen/python-mode'
+  Plug 'fatih/vim-go'
 call plug#end()
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -170,7 +174,7 @@ imap <c-k> <esc><c-w>ki
 imap <c-j> <esc><c-w>ji
 imap <c-h> <esc><c-w>hi
 
-
+let g:vim_markdown_folding_disabled = 1
 
 
 let g:fzf_height = '40%'
