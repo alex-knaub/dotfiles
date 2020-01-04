@@ -1,22 +1,20 @@
 call plug#begin('~/.vim/plugged')
-  Plug 'vim-airline/vim-airline'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
   Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/vim-slash'
+  Plug 'plasticboy/vim-markdown'
+  Plug 'stanangeloff/php.vim'
 call plug#end()
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tabs = 0
-let g:airline#extensions#tabline#show_buffers = 1
-autocmd VimEnter * AirlineToggleWhitespace
-
-set background=dark
-colorscheme default
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
+set background=dark
+ colorscheme default
 
 set nocompatible
 set noswapfile
@@ -113,13 +111,7 @@ set cursorline
 
 set viminfo='500,<50,s10,:20,h,!
 
-map <silent><F4> :CtrlPTag<cr><c-\>w
-
 map <BS> bdw
-map <UP> gk
-map <Down> gj
-imap <UP> <C-O>gk
-imap <Down> <C-O>gj
 
 "Zeile ohne linebreak am Ende kopieren
 map Y y$
@@ -128,8 +120,6 @@ map k gk
 "map h gh
 "map l gl
 
-imap <D-s> <ESC>:w <CR>
-map <D-s> <ESC>:w <CR>
 noremap <space> <C-d>
 noremap <S-space> <C-u>
 noremap % v%
@@ -140,15 +130,6 @@ cab W w
 nmap <C-j> gqap 
 
 map <Tab> ==
-
-imap <F2> <Esc> :NERDTreeToggle<CR>
-map <F2> :NERDTreeToggle<CR>
-map <Leader>r :NERDTreeFind<CR>
-"let g:NERDTreeWinSize=30
-let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 1
-let NERDTreeHijackNetrw=1
 
 
 map <F5> <C-W>w
